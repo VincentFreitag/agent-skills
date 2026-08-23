@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!--
+  Storm Research — report template.
+  Clone this file and FILL every section (see SKILL.md, Phase 3). Do NOT rebuild the CSS.
+  Placeholders are marked {{LIKE_THIS}} and with <!-- HOW TO FILL --> comments.
+  Repeatable blocks (findings, references, chips) show ONE example + a "repeat" comment.
+  Delete the example rows once you have written the real ones.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TOPIC}} — Storm Research Briefing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#2563eb;          /* blue accent */
+    --accent-soft:#eff4ff;
+    --ink:#0f172a;
+    --ink-soft:#475569;
+    --ink-faint:#94a3b8;
+    --line:#e2e8f0;
+    --bg:#ffffff;
+    --bg-soft:#f8fafc;
+    --ok:#16a34a;
+    --warn:#d97706;
+    --bad:#dc2626;
+    --mono:'Roboto Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg-soft);color:var(--ink);
+    font-family:var(--sans);line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px 80px}
+  main{background:var(--bg);border:1px solid var(--line);border-top:none;
+    padding:40px;border-radius:0 0 12px 12px}
+  @media(max-width:640px){main{padding:24px}}
+
+  /* Header */
+  header{background:var(--ink);color:#fff;border-radius:12px 12px 0 0;
+    padding:36px 40px 30px;max-width:860px;margin:40px auto 0}
+  @media(max-width:640px){header{padding:28px 24px;margin-top:16px}}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;color:#93c5fd;margin:0 0 10px}
+  header h1{font-size:30px;line-height:1.2;font-weight:800;margin:0 0 12px}
+  .meta{font-family:var(--mono);font-size:12.5px;color:#cbd5e1;margin:0}
+  .meta span{color:#fff}
+
+  /* Author-built disclosure */
+  .disclosure{font-size:12.5px;color:var(--ink-soft);background:var(--bg-soft);
+    border:1px dashed var(--line);border-radius:8px;padding:12px 16px;margin:0 0 28px}
+
+  /* Verification banner */
+  .verify-banner{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;
+    background:var(--accent-soft);border:1px solid #dbe6ff;border-radius:10px;
+    padding:16px 20px;margin:0 0 30px;font-family:var(--mono);font-size:13px}
+  .verify-banner strong{font-family:var(--sans);font-weight:700}
+  .vstat{white-space:nowrap}
+  .vstat b{font-weight:700}
+  .vstat.ok b{color:var(--ok)} .vstat.warn b{color:var(--warn)} .vstat.bad b{color:var(--bad)}
+
+  h2{font-size:13px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:44px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--accent-soft)}
+  h2:first-of-type{margin-top:0}
+  p{margin:0 0 14px}
+
+  /* 60-second summary */
+  .summary{font-size:17px;line-height:1.65;background:var(--bg-soft);
+    border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:20px 24px}
+
+  /* Findings */
+  .finding{border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 16px}
+  .finding-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+  .finding-rank{font-family:var(--mono);color:var(--ink-faint);font-size:12px;font-weight:500}
+  .finding h3{font-size:17px;font-weight:700;margin:4px 0 10px;line-height:1.35}
+  .confidence{flex:0 0 auto;text-align:right;font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+  .meter{width:120px;height:7px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:5px}
+  .meter>i{display:block;height:100%;background:var(--accent);border-radius:4px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .chip{font-family:var(--mono);font-size:11px;padding:3px 9px;border-radius:20px;
+    border:1px solid var(--line);color:var(--ink-soft);background:var(--bg-soft)}
+  .chip.support{border-color:#bbf7d0;background:#f0fdf4;color:#15803d}
+  .chip.challenge{border-color:#fecaca;background:#fef2f2;color:#b91c1c}
+  .chip .lbl{color:var(--ink-faint)}
+
+  /* Two-up boxes */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+  .box{border:1px solid var(--line);border-radius:10px;padding:20px 22px;background:var(--bg-soft)}
+  .box h3{font-size:15px;font-weight:700;margin:0 0 8px}
+  .box.sixth{border-color:#dbe6ff;background:var(--accent-soft)}
+
+  /* Actionable */
+  ol.actions{margin:0;padding-left:20px}
+  ol.actions li{margin:0 0 10px}
+
+  /* Claim safety guide */
+  .safety{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:640px){.safety{grid-template-columns:1fr}}
+  .safety-col{border-radius:10px;padding:16px 18px;border:1px solid var(--line)}
+  .safety-col h3{font-size:13px;font-family:var(--mono);text-transform:uppercase;
+    letter-spacing:.1em;margin:0 0 10px}
+  .safety-col.assert{border-color:#bbf7d0;background:#f0fdf4} .safety-col.assert h3{color:#15803d}
+  .safety-col.caveat{border-color:#fde68a;background:#fffbeb} .safety-col.caveat h3{color:#b45309}
+  .safety-col.avoid{border-color:#fecaca;background:#fef2f2} .safety-col.avoid h3{color:#b91c1c}
+  .safety-col ul{margin:0;padding-left:18px;font-size:14px} .safety-col li{margin:0 0 7px}
+
+  /* Contested signal sidebar */
+  .contested{border:1px solid #fde68a;background:#fffbeb;border-radius:10px;
+    padding:16px 20px;margin:0 0 16px}
+  .contested h3{font-size:13px;font-family:var(--mono);text-transform:uppercase;
+    letter-spacing:.1em;color:#b45309;margin:0 0 8px}
+  .contested ul{margin:0;padding-left:18px;font-size:14px}
+
+  /* Frontier question */
+  .frontier{background:var(--ink);color:#fff;border-radius:12px;padding:28px 32px;margin:44px 0 0}
+  .frontier .kicker{color:#93c5fd}
+  .frontier p{font-size:20px;font-weight:600;line-height:1.4;margin:0}
+
+  /* References */
+  ol.refs{margin:0;padding-left:22px;font-size:13.5px}
+  ol.refs li{margin:0 0 12px}
+  ol.refs a{color:var(--accent);word-break:break-word}
+  .tag{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:5px;
+    margin-left:6px;white-space:nowrap;vertical-align:middle}
+  .tag.confirmed{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
+  .tag.partial{background:#fffbeb;color:#b45309;border:1px solid #fde68a}
+  .tag.unverified{background:#f1f5f9;color:#475569;border:1px solid #e2e8f0}
+  .tag.false{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+
+  footer{max-width:860px;margin:24px auto 0;padding:0 20px;color:var(--ink-faint);
+    font-family:var(--mono);font-size:11.5px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="kicker">Storm Research · Multi-Perspective Briefing</p>
+  <h1>{{TOPIC}}</h1>
+  <p class="meta">Prepared for <span>{{READER_ROLE}}</span> · {{DATE}} · Panel: Practitioner · Academic · Skeptic · Economist · Historian</p>
+</header>
+
+<div class="wrap">
+<main>
+
+  <!-- Always disclose the author-built panel (SKILL.md guardrail). -->
+  <p class="disclosure"><strong>Method note.</strong> The five perspectives below are an
+  author-built expert panel simulated by AI agents doing live web research, not a survey of
+  named experts. Agreement across lenses is a strong hypothesis, not independent proof or field
+  consensus. Every citation was verified against its primary source (see banner).</p>
+
+  <!-- Fill from Phase 4c: the truthful tally. -->
+  <div class="verify-banner">
+    <strong>Verification</strong>
+    <span class="vstat ok"><b>{{N}}/{{N}}</b> citations checked</span>
+    <span class="vstat bad"><b>{{X}}</b> fabricated</span>
+    <span class="vstat warn"><b>{{Y}}</b> corrected</span>
+    <span class="vstat warn"><b>{{Z}}</b> demoted</span>
+  </div>
+
+  <h2>The 60-Second Summary</h2>
+  <!-- Decision-maker grade. Lead with the settled fact, then the contested interpretation. -->
+  <p class="summary">{{SUMMARY_PARAGRAPH}}</p>
+
+  <h2>5 Key Findings · ranked by reliability</h2>
+
+  <!-- ===== EXAMPLE finding block — repeat 5×, highest reliability first. Delete this example. ===== -->
+  <div class="finding">
+    <div class="finding-head">
+      <div>
+        <div class="finding-rank">Finding 01 · highest reliability</div>
+        <h3>{{FINDING_HEADLINE}}</h3>
+      </div>
+      <div class="confidence">
+        {{SCORE}}/10
+        <div class="meter"><i style="width:{{SCORE}}0%"></i></div><!-- e.g. 8/10 -> width:80% -->
+      </div>
+    </div>
+    <p>{{FINDING_DETAIL}}</p>
+    <div class="chips">
+      <span class="chip support"><span class="lbl">Supported by</span> Academic · Historian</span>
+      <span class="chip challenge"><span class="lbl">Challenged by</span> Skeptic</span>
+    </div>
+  </div>
+  <!-- ===== end example finding ===== -->
+
+  <h2>The Hidden Connection & The Missing Lens</h2>
+  <div class="grid2">
+    <div class="box">
+      <h3>Hidden connection</h3>
+      <!-- The non-obvious link that only surfaces across all five lenses (Phase 2). -->
+      <p>{{HIDDEN_CONNECTION}}</p>
+    </div>
+    <div class="box sixth">
+      <h3>Key assumption · the missing 6th lens</h3>
+      <!-- The blind spot no lens covered, framed as the lens that could change the conclusions. -->
+      <p>{{MISSING_SIXTH_LENS}}</p>
+    </div>
+  </div>
+
+  <h2>Actionable Insight · for {{READER_ROLE}}</h2>
+  <!-- 3-6 specific, concrete moves. Not abstract advice. -->
+  <ol class="actions">
+    <li>{{ACTION_1}}</li>
+    <li>{{ACTION_2}}</li>
+    <li>{{ACTION_3}}</li>
+    <!-- add up to 6 -->
+  </ol>
+
+  <h2>Claim Safety Guide</h2>
+  <!-- Populate from Phase 4 verdicts. What is safe to say, what needs a caveat, what to avoid. -->
+  <div class="safety">
+    <div class="safety-col assert">
+      <h3>Safe to assert</h3>
+      <ul><li>{{ASSERT_1}}</li><li>{{ASSERT_2}}</li></ul>
+    </div>
+    <div class="safety-col caveat">
+      <h3>Assert with caveat</h3>
+      <ul><li>{{CAVEAT_1}}</li><li>{{CAVEAT_2}}</li></ul>
+    </div>
+    <div class="safety-col avoid">
+      <h3>Avoid claiming</h3>
+      <ul><li>{{AVOID_1}}</li><li>{{AVOID_2}}</li></ul>
+    </div>
+  </div>
+
+  <!-- Optional: only render if Phase 4 demoted preprints/contested claims. Otherwise delete. -->
+  <h2>Contested Signal</h2>
+  <div class="contested">
+    <h3>Demoted / preprint / single-source — treat as provisional</h3>
+    <ul>
+      <li>{{CONTESTED_1}}</li>
+      <li>{{CONTESTED_2}}</li>
+    </ul>
+  </div>
+
+  <div class="frontier">
+    <p class="kicker">The Frontier Question</p>
+    <!-- The single empirical question that would change the conclusions. -->
+    <p>{{FRONTIER_QUESTION}}</p>
+  </div>
+
+  <h2 style="margin-top:44px">References</h2>
+  <!-- Every citation, with a verification-status tag from Phase 4.
+       Tag classes: confirmed | partial | unverified | false -->
+  <ol class="refs">
+    <li>
+      {{AUTHORS}} ({{YEAR}}). <em>{{TITLE}}</em>. {{VENUE}}.
+      <a href="{{URL}}">{{URL}}</a>
+      <span class="tag confirmed">CONFIRMED</span>
+    </li>
+    <!-- repeat per citation; swap the tag to match the verdict -->
+  </ol>
+
+</main>
+<footer>Generated by the Storm Research skill · author-built panel · citations verified against primary sources</footer>
+</div>
+
+</body>
+</html>
