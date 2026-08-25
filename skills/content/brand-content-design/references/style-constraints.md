@@ -2,6 +2,11 @@
 
 13 distinct visual styles across 4 aesthetic families. Each produces fundamentally different visual results.
 
+> **Scope: HTML pages, carousels and stage decks.** The hard limits below (word counts,
+> whitespace percentages, element caps) describe *aesthetic* systems for content that is looked
+> at. They do not apply to business or consulting decks, where a single action title alone runs
+> 15–25 words. For those, `slide-writing` governs density and layout.
+
 ---
 
 ## Style Families Overview

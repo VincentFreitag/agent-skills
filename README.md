@@ -18,7 +18,8 @@ small, composable, adaptable skills rather than a framework that owns your proce
 | [`fable-mode`](skills/engineering/fable-mode/SKILL.md) | engineering | model-invoked | A task has many layers — dependent steps, unknowns that could change the approach, debugging where the first theory may be wrong — or it keeps stalling. Loads a five-gate task loop. Skip for trivial edits. |
 | [`grill-me`](skills/productivity/grill-me/SKILL.md) | productivity | user-invoked | Stress-test a plan or run a discovery session. Interviews you one question at a time and co-authors `brainstorming/<date>-<slug>/idea.md`, checkpointing after every exchange. |
 | [`storm-research`](skills/productivity/storm-research/SKILL.md) | productivity | user-invoked | Multi-perspective, citation-verified research briefing → self-contained HTML in `storm-reports/`. Five expert lenses, contradiction map, adversarial peer review. Overkill for a simple lookup. |
-| [`brand-content-design`](skills/content/brand-content-design/SKILL.md) | content | user-invoked | Branded visual output — HTML/landing pages, slides, LinkedIn carousels, color palettes — driven by a repo-local `brand/brand-philosophy.md`. |
+| [`brand-content-design`](skills/content/brand-content-design/SKILL.md) | content | user-invoked | Branded visual output — HTML/landing pages, stage decks, LinkedIn carousels, color palettes — driven by a repo-local `brand/brand-philosophy.md`. Owns the brand, not consulting decks. |
+| [`slide-writing`](skills/content/slide-writing/SKILL.md) | content | model-invoked | Build, restructure or review a consulting-grade deck — steerco pack, board deck, pre-read, one-pager. Owns message, storyline, action titles, layout, chart logic and QA; consumes `brand-content-design`'s `brand/` files for the visual frame. |
 
 ## Importing into a project
 

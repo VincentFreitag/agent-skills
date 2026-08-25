@@ -1,6 +1,6 @@
 ---
 name: brand-content-design
-description: Create branded visual content (HTML/landing pages, presentations, LinkedIn carousels, color palettes) with the project's own visual identity. Use when the user says "create presentation", "make slides", "make carousel", "LinkedIn carousel", "create HTML page", "landing page", "build web page", "design system", "brand init", "extract brand", "color palette", "alternative colors", "infographic", "brand assets", or wants any on-brand visual output. Reads `brand/brand-philosophy.md`.
+description: Create branded visual content (HTML/landing pages, stage/keynote decks, LinkedIn carousels, color palettes) with the project's own visual identity, and stand up the brand identity itself. Use when the user says "brand init", "extract brand", "design system", "color palette", "alternative colors", "brand assets", "make carousel", "LinkedIn carousel", "create HTML page", "landing page", "build web page", "infographic", "stage deck", "keynote slides", or wants any on-brand visual output. NOT for business or consulting decks — a `.pptx` with action titles, a steerco/board pack, a status or capability deck goes to the `slide-writing` skill, which consumes this skill's `brand/` output. Reads `brand/brand-philosophy.md`.
 allowed-tools: Read, Glob, Grep, Write, Bash, AskUserQuestion, Artifact, Skill
 user-invocable: true
 ---
@@ -42,6 +42,10 @@ Apply these layers, in order, for every piece of content:
 3. **Visual Style** — one of 13 styles in `references/style-constraints.md`. Obey its
    enforcement block (whitespace %, word/element limits, layout, type weights, allowed
    components). `references/output-specs.md` gives dimensions/format/typography minimums.
+   **Scope:** layer 3 applies to HTML pages, carousels and stage decks only. It does **not**
+   apply to business/consulting decks — its hard limits (8–15 words per slide, 60–70%
+   whitespace, no bullets) contradict how a read deck works, and those decks are governed by
+   `slide-writing` instead.
 
 ## Flows
 
@@ -68,6 +72,23 @@ every other flow reads the file it produces. Skip it once the file is there.
    publish it with the **Artifact** tool. Honor the Artifact CSP: no external fonts/CSS/JS.
 
 ### Presentation (slides) / LinkedIn carousel / branded .docx  ← design-only, no binary export
+
+> **Business / consulting decks go to `slide-writing`, not here — hand off before reading any
+> further.** If the request is a real `.pptx` — steerco pack, board deck, status update,
+> capability deck, one-pager with action titles — invoke the **`slide-writing`** skill. It
+> consumes this skill's output (`brand/brand-philosophy.md`, `brand.tokens.json`,
+> `brand/assets/`, plus any `brand/*build-guide*.md`) as the authoritative brand and builds the
+> deck from the brand template with `python-pptx`. Do **not** load `references/
+> presentations-guide.md` or `references/style-constraints.md` for those decks: both encode
+> Presentation Zen, which targets *stage* decks and directly contradicts a read deck's density.
+> This flow stays for stage-style Presentation-Zen decks and social carousels rendered as HTML.
+> If no brand exists yet, run **Brand Init** here first, then hand off.
+>
+> **Frame vs. field.** What this skill and the `brand/` files own is the *frame*: canvas,
+> margins, bands, palette and contrast rules, type families, logo, master layouts. Inside the
+> content band of a consulting deck, `slide-writing` designs from the content, and the
+> template's placeholder sizes are defaults rather than law.
+
 **Binary export (PDF/PPTX/.docx) is deliberately not bundled with this skill.** It would need a
 Playwright + python-docx toolchain that most host projects don't want as a dependency. So:
 1. Read `brand/brand-philosophy.md` + the matching content-type guide + style +
