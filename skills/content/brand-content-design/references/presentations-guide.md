@@ -2,6 +2,14 @@
 
 Content type guide for creating presentations. Based on Presentation Zen principles.
 
+> **Scope: stage decks only.** Everything below assumes a deck that is *projected* while
+> someone speaks over it — keynotes, pitches, conference talks, town halls. Its rules (slides
+> meaningless without narration, 8–20 words per slide, 24pt body minimum, no bullets) are
+> correct for that genre and wrong for a deck that is *read*: a pre-read, steerco pack, board
+> deck, status report or proposal. Those go to the **`slide-writing`** skill, which owns
+> density, text volume and layout for them. Do not apply this file to them, and do not let its
+> word limits or type minimums override a brand's content scale.
+
 ---
 
 ## Zen Foundation
