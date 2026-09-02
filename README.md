@@ -1,4 +1,4 @@
-# InnoHub Agent Skills
+# Agent Skills
 
 Our shared library of agent skills. Skills live here once, get imported into individual
 projects, and improvements flow back here instead of dying in whichever repo they were written
