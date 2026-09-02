@@ -17,6 +17,14 @@ the titles, they should be able to act.
 - **No general truths.** "Managing risk is important for success" says nothing.
 - **No absolutes.** "All divisions fail to follow best practice" invites the one
   counter-example that kills your credibility.
+- **No antithesis formula.** "It is X, not Y" reads as a flourish and carries half
+  a claim, because half the words are spent on the negation. This covers every
+  variant: "X, not Y", "not X but Y", "X rather than Y", "not just X but Y",
+  "not the other way round". Write the positive claim on its own. If the contrast
+  genuinely earns space, give it a second sentence with its own evidence.
+  "Lead time follows how new the design is" beats "lead time follows the design,
+  not the package". The ban is on output prose. Teaching by counter-example, as
+  this file does, is a different job.
 - **Results, not process.** Never "we conducted 15 interviews"; always what the
   interviews revealed.
 - **Parallel across the deck.** If titles in a section start with a framework
@@ -114,5 +122,7 @@ slides without anyone noticing, it has IR titles.
   does it jump?
 - Does each title's number appear on its slide, exactly?
 - Could this title sit on any other slide in the deck? If yes, it is too generic.
-- Does any title state what *was done* rather than what was *found*?
+- Does any title state what *was done* instead of what was *found*?
+- Does any title lean on "X, not Y" to sound sharp? Delete the negation and see
+  whether the remaining half still says something. If it does, ship that.
 - Two lines or fewer, all of them?

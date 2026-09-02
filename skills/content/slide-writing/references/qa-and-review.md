@@ -141,3 +141,18 @@ If numbers are provisional, sticker the slide (`Preliminary`, `Indicative`,
 footnote the assumption on the same page as the number. If a range is genuinely a
 range, show both cases. Overstated precision is the fastest way to lose a room,
 and the sticker costs nothing.
+
+## Banned phrasings
+
+Sweep the built deck for these before handing it over. They survive review
+because each one reads fine in isolation.
+
+| Pattern | Why it fails | Fix |
+|---|---|---|
+| "It is X, not Y" | half the words carry a negation that adds no evidence | write X alone |
+| "not just X, but Y" | same tic wearing a different coat | write Y alone |
+| "not the other way round" | the reader already inferred the direction | delete |
+| "In this section we show..." | meta-comment, the slide is the showing | delete |
+| "X was driven by Y" | passive, hides the actor | "Y drove X" |
+
+Grep is enough: `, not `, `not just`, `rather than`, `instead of`, `not only`.
