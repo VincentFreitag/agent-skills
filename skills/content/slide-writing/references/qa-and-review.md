@@ -42,8 +42,9 @@ list and any checklist in its build guide are the source. Generic version:
 - [ ] Logo-only assets (gradients, marks) not reused as fills or chart styles
 - [ ] Light/dark used in blocks per the brand's rhythm, not slide by slide
 - [ ] Accent colour: one element per slide, and legal on that background
-- [ ] Footer text, confidentiality level and page numbers set; title slide
-      exempt from numbering if the brand says so
+- [ ] Footer text and confidentiality level set
+- [ ] No page number typed into any slide; the page-number corner is empty and
+      unobstructed, ready for PowerPoint's slide-number field
 - [ ] Fonts embedded on save (open once on a machine without them to be sure)
 - [ ] Nothing below the brand's footer line
 - [ ] Every string on the slide obeys the brand's voice, vocabulary and punctuation
@@ -101,7 +102,8 @@ finding.
 **Structure** — exec summary present, contents present, pyramid order.
 **Titles** — full sentences, match content, ≤2 lines, numbers reconciled.
 **Footer** — source on every data slide, footnotes explained where they appear,
-page numbers, consistent footnote style.
+consistent footnote style, page-number corner left empty for the PowerPoint
+field.
 **Formatting** — nothing out of bounds; recurring elements in identical
 positions; one font family; one body size; bullets in groups of ≥2 with parallel
 grammar, each one a statement rather than a category label; ≤3 colours per
@@ -141,3 +143,18 @@ If numbers are provisional, sticker the slide (`Preliminary`, `Indicative`,
 footnote the assumption on the same page as the number. If a range is genuinely a
 range, show both cases. Overstated precision is the fastest way to lose a room,
 and the sticker costs nothing.
+
+## Banned phrasings
+
+Sweep the built deck for these before handing it over. They survive review
+because each one reads fine in isolation.
+
+| Pattern | Why it fails | Fix |
+|---|---|---|
+| "It is X, not Y" | half the words carry a negation that adds no evidence | write X alone |
+| "not just X, but Y" | same tic wearing a different coat | write Y alone |
+| "not the other way round" | the reader already inferred the direction | delete |
+| "In this section we show..." | meta-comment, the slide is the showing | delete |
+| "X was driven by Y" | passive, hides the actor | "Y drove X" |
+
+Grep is enough: `, not `, `not just`, `rather than`, `instead of`, `not only`.
