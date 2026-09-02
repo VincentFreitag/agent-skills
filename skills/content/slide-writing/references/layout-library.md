@@ -62,8 +62,9 @@ Slots: `header` (11pt bold) × 3, `takeaway` (bold, 1 line) × 3, `support`
 Geometry: 4/4/4 split, recommendation bar full width at y ≈ 5.90.
 
 ### R3 — Agenda / contents
-Numbered sections with page numbers. Reappears as a section divider with the
-current section in accent, the rest muted.
+Numbered sections, no page references — they break the moment a slide moves.
+Reappears as a section divider with the current section in accent, the rest
+muted.
 
 ### R4 — Section divider
 Section number, section name, and the one-line takeaway of the section. A

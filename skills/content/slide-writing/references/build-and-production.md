@@ -91,10 +91,18 @@ Only use a free shape where the brand provides a deliberately empty layout
 - **Fonts by family, respecting the brand's traps.** Where the emphasis face is a
   separate family, set `run.font.name` to that family; never set `bold=True` on a
   face that has no bold cut.
-- **Footer, date and page number are not automatic.** `python-pptx` does not
-  create those placeholders. Either write them yourself from the grid values, or
-  finish in PowerPoint with `Insert > Header & Footer > Apply to All`. Say which
-  you did.
+- **Footer and date are not automatic.** `python-pptx` does not create those
+  placeholders. Either write them yourself from the grid values, or finish in
+  PowerPoint with `Insert > Header & Footer > Apply to All`. Say which you did.
+- **Page numbers are never built.** Do not write a number into any slide and do
+  not add a shape that holds one. Leave the grid's page-number corner empty and
+  keep footnotes, source lines and logos out of it, so the field has room. The
+  user switches on `Insert > Header & Footer > Slide number > Apply to All`
+  afterwards; that field renumbers itself on every reorder, insert and delete,
+  which a typed number does not. If a template layout already carries a
+  `SLIDE_NUMBER` placeholder, leave it untouched — it is the same field and
+  PowerPoint fills it. Where a build helper or an older script writes numbers,
+  strip that code rather than working around it.
 - **Structural work first.** Add, delete and reorder slides *before* editing any
   content. Never copy a slide part by hand.
 - **Template placeholder text.** Grep the output for the template's own
@@ -193,8 +201,9 @@ python -c "from pptx import Presentation;print('\n'.join(sh.text_frame.text for 
 State, in the reply that delivers the deck:
 
 - which design governs it (file + variant, per `brand-and-template.md`);
-- which build path was used, and whether footer/page numbers still need the
-  one-click PowerPoint step;
+- which build path was used, and that page numbers are still switched on in
+  PowerPoint (`Insert > Header & Footer > Slide number > Apply to All`), plus any
+  footer or date line that needs the same step;
 - which fonts the file specifies versus what the preview rendered with;
 - every placeholder still open (`[[…]]`) and what it is waiting for;
 - anything that was cut to hold the brand's minimum type size.

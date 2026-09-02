@@ -203,7 +203,7 @@ Tier N defaults. Consistency across slides matters more than the specific values
 | Kicker / tracker | 0.28 – 0.50 | Section label or `Kicker \|` prefix, 9pt, muted |
 | Action title | 0.52 – 1.12 | 18–20pt semibold, **max 2 lines** |
 | Content | 1.30 – 6.60 | Everything else |
-| Footer | 6.75 – 7.22 | Footnotes, source, page no., 7pt muted |
+| Footer | 6.75 – 7.22 | Footnotes and source, 7pt muted. Page-number corner left empty |
 
 Horizontal: margins **0.5"** left and right → live width **12.333"**.
 12 columns of **0.89"** with **0.15"** gutters.
@@ -223,6 +223,20 @@ content — do not shrink the band, the margins, or the type.
 column widths from `brand.tokens.json` (`grid`) or the build guide. Keep the same
 *ratios* — an 8/4 split is 8/4 of the brand's live width. Respect any "nothing
 below y = X" footer rule the brand states.
+
+### Page numbers stay out of the build
+
+Never write a page number into a slide, and never place a text box that holds
+one. Reserve the space the brand's grid gives the number, leave it empty, and
+keep every other footer element clear of it. The user applies PowerPoint's own
+slide-number field afterwards (`Insert > Header & Footer > Slide number > Apply
+to All`), which renumbers itself when slides move, get inserted or get deleted.
+A typed number goes stale on the first reorder and is then wrong in a document
+nobody re-checks.
+
+Same reason, same rule for cross-references: an agenda, contents or divider
+slide names its sections without "p. 12" style pointers, and body copy refers to
+"the sourcing section" rather than to a page.
 
 ## Type scale
 
